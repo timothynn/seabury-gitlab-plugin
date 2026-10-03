@@ -1,0 +1,17 @@
+{
+  "name": "seabury-gitlab",
+  "version": "1.0.0",
+  "description": "Local read/write connector for gitlab.seaburymro.com.",
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Seabury GitLab",
+    "shortDescription": "Work with Seabury repositories and merge requests",
+    "longDescription": "Browse projects, files, issues, merge requests and pipelines. Create and update issues and merge requests and post requested comments using your GitLab permissions.",
+    "category": "Developer Tools",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://gitlab.seaburymro.com",
+    "defaultPrompt": ["Show my Seabury GitLab projects", "Review an open merge request", "Check the latest pipeline for a project"],
+    "brandColor": "#155E75"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "seabury_gitlab": {
+      "command": "node",
+      "args": ["--use-system-ca", "./src/server.mjs"],
+      "cwd": ".",
+      "env_vars": ["LOCALAPPDATA", "PATH", "SystemRoot", "SEABURY_GITLAB_TOKEN", "NODE_EXTRA_CA_CERTS"],
+      "startup_timeout_sec": 20,
+      "tool_timeout_sec": 60
+    }
+  }
+}

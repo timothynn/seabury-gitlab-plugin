@@ -1,0 +1,10 @@
+{
+  "name": "seabury-local",
+  "interface": { "displayName": "Seabury Work Plugins" },
+  "plugins": [{
+    "name": "seabury-gitlab",
+    "source": { "source": "local", "path": "./plugins/seabury-gitlab" },
+    "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+    "category": "Developer Tools"
+  }]
+}

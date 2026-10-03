@@ -1,0 +1,11 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "seabury_gitlab": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["--use-system-ca", "./src/server.mjs"],
+      "cwd": "."
+    }
+  }
+}
