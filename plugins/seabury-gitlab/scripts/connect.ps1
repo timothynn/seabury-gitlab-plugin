@@ -1,7 +1,7 @@
 $ErrorActionPreference = 'Stop'
 Import-Module (Join-Path $PSHOME 'Modules/Microsoft.PowerShell.Security/Microsoft.PowerShell.Security.psd1') -ErrorAction Stop
 Write-Host 'Create a personal access token with api scope and an expiry at:'
-Write-Host 'https://gitlab.seaburymro.com/-/user_settings/personal_access_tokens'
+Write-Host 'https://gitlab.seaburymro.com/-/profile/personal_access_tokens'
 Write-Host 'The token is entered invisibly and encrypted for your Windows account.'
 $secureToken = Read-Host 'GitLab personal access token' -AsSecureString
 $pointer = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($secureToken)

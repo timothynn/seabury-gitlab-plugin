@@ -4,7 +4,7 @@ Custom local Codex plugin for **https://gitlab.seaburymro.com**. Requires Node.j
 
 ## Connect your account
 
-1. Create a GitLab personal access token with **api** scope and an expiry at https://gitlab.seaburymro.com/-/user_settings/personal_access_tokens (older GitLab versions may use `/-/profile/personal_access_tokens`). This scope is needed for issue and merge request writes. Your existing project permissions still apply.
+1. Create a GitLab personal access token with **api** scope and an expiry at [Seabury GitLab personal access tokens](https://gitlab.seaburymro.com/-/profile/personal_access_tokens). This scope is needed for issue and merge request writes. Your existing project permissions still apply.
 2. Double-click `plugins/seabury-gitlab/Connect-GitLab.cmd`, or run its `scripts/connect.ps1` in PowerShell. Paste the token into the invisible local prompt, never into chat.
 3. The script verifies your account, then saves the token using Windows DPAPI at `%LOCALAPPDATA%/SeaburyGitLab/token.dpapi`. Open a new Codex chat and try: **Use Seabury GitLab to list my projects.**
 
