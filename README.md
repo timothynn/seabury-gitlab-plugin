@@ -22,7 +22,17 @@ This version does not merge/approve requests, delete resources, push code or tri
 
 ## Install on another Windows machine
 
-Run `npm.cmd ci --ignore-scripts` inside `plugins/seabury-gitlab`, then from the marketplace folder:
+Install Git, Node.js 24 or newer, and the Codex CLI. Your GitHub account needs access to this private repository. Clone it into a permanent folder and run the installer:
+
+```powershell
+git clone https://github.com/timothynn/seabury-gitlab-plugin.git
+cd seabury-gitlab-plugin
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Install.ps1
+```
+
+The installer checks prerequisites, installs locked dependencies, runs the tests, and registers the local marketplace and plugin. Then run `plugins/seabury-gitlab/Connect-GitLab.cmd` to connect your own GitLab account.
+
+For manual installation, run `npm.cmd ci --ignore-scripts` inside `plugins/seabury-gitlab`, then from the marketplace folder:
 
 ```powershell
 codex plugin marketplace add .
@@ -30,6 +40,24 @@ codex plugin add seabury-gitlab@seabury-local
 ```
 
 Keep the marketplace folder available. Run the connection script on that computer. Installation registers the local plugin; a new chat or app restart may be needed to load tools. This local package is not a hosted ChatGPT web connector.
+
+## Troubleshooting
+
+- **Tools are missing:** open a new chat or restart Codex. Check installation with `codex plugin list --json`.
+- **Authentication fails:** rerun the connection script with a valid, unexpired token. HTTP 403 can mean missing `api` scope or insufficient project permissions.
+- **Certificate or network error:** connect to your work VPN if required. The plugin uses the Windows trusted certificate store; your work CA must be trusted by Windows. `NODE_EXTRA_CA_CERTS` supports an additional CA file. Keep TLS verification enabled.
+- **Dependencies are missing:** rerun `Install.ps1` from the clone.
+- **Large result:** reduce `per_page` or narrow the request. Follow `next_page` for additional pages.
+
+## Files included
+
+`Install.ps1` installs the plugin; `.agents/plugins/marketplace.json` registers it. `plugins/seabury-gitlab` contains the portable and Codex manifests, MCP configurations, source, credential helpers, usage skill, tests, and dependency lockfile. Credentials and `node_modules` are excluded from Git.
+
+## Update or remove
+
+Pull updates with `git pull --ff-only`, then reinstall dependencies with `npm.cmd ci --ignore-scripts` inside the plugin folder. For an already installed plugin, refresh its cached copy using `codex plugin remove seabury-gitlab@seabury-local` followed by `codex plugin add seabury-gitlab@seabury-local` from the updated clone. Open a new chat afterward. The encrypted credential remains on this computer.
+
+To uninstall, run `codex plugin remove seabury-gitlab@seabury-local`. To disconnect the account completely, also revoke the token in GitLab and delete `%LOCALAPPDATA%/SeaburyGitLab/token.dpapi`.
 
 ## Development and verification
 
